@@ -1,0 +1,21 @@
+package edu.usal.dao.factory;
+
+import edu.usal.negocio.dao.interfaces.ClienteDAO;
+import edu.usal.dao.implementacion.*;
+
+public class ClienteFactory {
+
+	public static ClienteDAO GetImplementation(String source) {
+		
+		if (source.equals("Archivo")) {
+			return new ClienteDAOimplArchivo();
+		}
+		else if(source.equals("Serializacion")) {
+			
+			return new ClienteDAOimplSerializacion();
+		}
+		return null;
+	}
+	
+	
+}
