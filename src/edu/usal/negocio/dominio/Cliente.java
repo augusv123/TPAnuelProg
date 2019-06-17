@@ -26,7 +26,10 @@ public class Cliente {
         this.direccionCompleta = direccionCompleta;
     }
 
-    public String getNombreYApellido() {
+    public Cliente() {
+	}
+
+	public String getNombreYApellido() {
         return nombreYApellido;
     }
 
@@ -97,4 +100,5 @@ public class Cliente {
     public void setDireccionCompleta(Direccion direccionCompleta) {
         this.direccionCompleta = direccionCompleta;
     }
+
 }
