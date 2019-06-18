@@ -31,7 +31,7 @@ public class ClienteDAOimplSerializacion implements ClienteDAO {
 	}
 
 	@Override
-	public void EliminarCliente(Cliente cliente) {
+	public void EliminarCliente(String dni) {
 		
 	}
 

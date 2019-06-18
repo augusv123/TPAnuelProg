@@ -49,7 +49,27 @@ public class ClienteDAOimplArchivo implements ClienteDAO {
 	}
 	
 	@Override
-	public void EliminarCliente(Cliente cliente) {}
+	public void EliminarCliente(String dni) throws IOException {
+		FileReader fr = new FileReader("cliente.txt");
+		BufferedReader br = new BufferedReader(fr);
+
+		FileWriter fw = new FileWriter("Cliente.txt");
+		BufferedWriter bw = new BufferedWriter(fw);
+
+
+		String aux=  null;
+		while(  br.readLine()!= null){
+				aux = br.readLine();
+				if(aux.equals(dni)){
+					System.out.println("Se encontro");
+				}
+				else{
+					System.out.println("no se encontro");
+				}
+		}
+
+
+	}
 	
 	@Override
 	public List<Cliente> GetAll() throws IOException{
@@ -84,7 +104,9 @@ public class ClienteDAOimplArchivo implements ClienteDAO {
 	}
 	
 	@Override
-	public void ModificarCliente(Cliente cliente) {}
+	public void ModificarCliente(Cliente cliente) {
+
+	}
 
 	
 	
