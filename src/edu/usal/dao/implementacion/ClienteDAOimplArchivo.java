@@ -60,7 +60,9 @@ public class ClienteDAOimplArchivo implements ClienteDAO {
 		String aux=  null;
 		while(  br.readLine()!= null){
 				aux = br.readLine();
-				if(aux.equals(dni)){
+				String[] array =  aux.split(";");
+				if(array[1].equals(dni)){
+				    bw.write("");
 					System.out.println("Se encontro");
 				}
 				else{
