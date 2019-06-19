@@ -15,29 +15,32 @@ public class ClienteDAOimplArchivo implements ClienteDAO {
 	private BufferedWriter archivoBufferedWriter;
 	private BufferedReader archivoBufferedReader;
 
+
+
+	public ClienteDAOimplArchivo() throws IOException {
+		archivo = new File("clientes.txt");
+
+
+
+
+
+
+	}
+
 	@Override
 	public void AgregarCliente(Cliente cliente) throws IOException {
-		
-		List<Cliente> cliente2 = new ArrayList<Cliente>();
-		try {
-			
-			cliente2 = GetAll();
-			
-		}catch(Exception e) {
-			System.out.println(e.getMessage());
-			
-		}
-		cliente2.add(cliente);
-		
-		archivo = new File("Cliente.txt");
+
+
 		archivoWriter = new FileWriter(archivo, true);
 		archivoBufferedWriter = new BufferedWriter(archivoWriter);
+
 		
 		String str = SaveCliente(cliente);
 		
 		archivoBufferedWriter.write(str);
+		archivoBufferedWriter.flush();
 		archivoBufferedWriter.close();
-		archivoWriter.close();
+
 			
 	}
 	
@@ -49,38 +52,76 @@ public class ClienteDAOimplArchivo implements ClienteDAO {
 	}
 	
 	@Override
-	public void EliminarCliente(String dni) throws IOException {
-		FileReader fr = new FileReader("cliente.txt");
-		BufferedReader br = new BufferedReader(fr);
+	public boolean EliminarCliente(String dni) throws IOException {
+		archivo = new File("clientes.txt");
 
-		FileWriter fw = new FileWriter("Cliente.txt");
-		BufferedWriter bw = new BufferedWriter(fw);
+		archivoReader = new FileReader(archivo );
+		archivoBufferedReader = new BufferedReader(archivoReader);
 
 
-		String aux=  null;
-		while(  br.readLine()!= null){
-				aux = br.readLine();
-				String[] array =  aux.split(";");
-				if(array[1].equals(dni)){
-				    bw.write("");
-					System.out.println("Se encontro");
-				}
-				else{
-					System.out.println("no se encontro");
-				}
+		archivoWriter = new FileWriter("tempFile.txt", false);
+		archivoBufferedWriter = new BufferedWriter(archivoWriter);
+
+		String linea = archivoBufferedReader.readLine();
+
+		boolean encontrado = false;
+		while (linea!= null){
+
+			String[] lineaArray  =  linea.split(";");
+			String dniActual = lineaArray[1];
+
+			if(dni.equals(dniActual)){
+					encontrado= true;
+			}
+			else{
+				archivoBufferedWriter.write(linea);
+				archivoBufferedWriter.newLine();
+			}
+
+			linea = archivoBufferedReader.readLine();
+		}
+		archivoBufferedWriter.flush();
+		archivoBufferedWriter.close();
+
+		if(encontrado== true){
+			archivoReader = new FileReader("tempFile.txt" );
+			archivoBufferedReader = new BufferedReader(archivoReader);
+
+
+			archivoWriter = new FileWriter("clientes.txt", false);
+			archivoBufferedWriter = new BufferedWriter(archivoWriter);
+
+			String linea2 = archivoBufferedReader.readLine();
+
+
+			while (linea2!= null){
+
+				archivoBufferedWriter.write(linea2);
+				archivoBufferedWriter.newLine();
+
+
+				linea2 = archivoBufferedReader.readLine();
+			}
+			archivoBufferedWriter.flush();
+			archivoBufferedWriter.close();
 		}
 
 
+
+
+	return encontrado;
 	}
 	
 	@Override
 	public List<Cliente> GetAll() throws IOException{
-		
-		
-		archivo = new File("cliente.txt");
-		archivoReader = new FileReader(archivo);
+
+		archivo = new File("clientes.txt");
+
+		archivoReader = new FileReader(archivo );
 		archivoBufferedReader = new BufferedReader(archivoReader);
-		
+
+
+
 		String linea;
 		List<Cliente> listadoCliente = new ArrayList<Cliente>();
 		

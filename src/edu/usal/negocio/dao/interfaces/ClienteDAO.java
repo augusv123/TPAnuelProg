@@ -10,7 +10,7 @@ public interface ClienteDAO{
 
 	public void AgregarCliente(Cliente cliente) throws IOException;
 	
-	public void EliminarCliente(String dni) throws IOException;
+	public boolean EliminarCliente(String dni) throws IOException;
 	
 	List<Cliente> GetAll() throws IOException;
 	

@@ -8,31 +8,49 @@ import edu.usal.negocio.dao.interfaces.ClienteDAO;
 
 public class ClienteDAOimplSerializacion implements ClienteDAO {
 
-	@Override
-	public void AgregarCliente(Cliente cliente) throws IOException {
-		
-		List<Cliente> cliente2 = new ArrayList<Cliente>();
-		try {
-			
-			cliente2 = GetAll();
-			
-		}catch(Exception e) {
-			System.out.println(e.getMessage());
-			
-		}
-		cliente2.add(cliente);
-		
-		FileOutputStream archsalida = new FileOutputStream(new File("profesor.txt"));
-		ObjectOutputStream ouStream = new ObjectOutputStream(archsalida);
-		ouStream.writeObject(cliente2);
-		ouStream.close();
-	
-		
+
+
+	public ClienteDAOimplSerializacion () throws IOException {
+
+
 	}
 
 	@Override
-	public void EliminarCliente(String dni) {
-		
+	public void AgregarCliente(Cliente cliente) throws IOException {
+		FileOutputStream f = new FileOutputStream(new File("clientesS.txt"),true);
+		ObjectOutputStream o = new ObjectOutputStream(f);
+
+		o.writeObject(cliente);
+
+		o.close();
+		f.close();
+
+
+	}
+
+
+	@Override
+	public boolean EliminarCliente(String dni) {
+		return false;
+	}
+
+	public Cliente getCliente(){
+
+		try {
+
+			FileInputStream fileIn = new FileInputStream("clientesS.txt");
+			ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+
+			Cliente cliente = (Cliente) objectIn.readObject();
+
+			System.out.println("The Object has been read from the file");
+			objectIn.close();
+			return cliente;
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override

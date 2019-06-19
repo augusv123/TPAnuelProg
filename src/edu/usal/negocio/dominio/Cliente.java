@@ -1,8 +1,9 @@
 package edu.usal.negocio.dominio;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Cliente {
+public class Cliente implements Serializable {
     private String nombreYApellido;
     private String dni;
     private Pasaporte pasaporte;
@@ -28,6 +29,10 @@ public class Cliente {
 
     public Cliente() {
 	}
+    public Cliente(String nombreYApellido, String dni ) {
+        this.nombreYApellido = nombreYApellido;
+        this.dni = dni;
+    }
 
 	public String getNombreYApellido() {
         return nombreYApellido;
@@ -99,6 +104,12 @@ public class Cliente {
 
     public void setDireccionCompleta(Direccion direccionCompleta) {
         this.direccionCompleta = direccionCompleta;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Name:" + this.nombreYApellido + "\ndni: " + this.dni ;
     }
 
 }
