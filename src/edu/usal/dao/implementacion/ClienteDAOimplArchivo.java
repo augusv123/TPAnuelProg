@@ -46,7 +46,7 @@ public class ClienteDAOimplArchivo implements ClienteDAO {
 	
 	private String SaveCliente(Cliente cliente){
 		
-		return cliente.getNombreYApellido() + ";" + cliente.getDni() +";"+ "\n";
+		return cliente.getNombreYApellido() + ";" + cliente.getDni() +";" + cliente.getEmail()+";"+ "\n";
 		
 		
 	}
