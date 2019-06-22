@@ -32,7 +32,7 @@ public class Principal {
 			List <Cliente> lista = impDAO.GetAll();
 
 			for( Cliente cliente : lista) {
-				System.out.println(cliente.getNombreYApellido() +" "+ cliente.getDni());
+				System.out.println(cliente.toString());
 			}
 
 			System.out.println(impDAO.EliminarCliente("123"));
@@ -42,9 +42,10 @@ public class Principal {
 			e.printStackTrace();	
 		}
 
-		cd.AgregarCliente(c2);
-		Cliente clientito = cd.getCliente();
-		System.out.println(clientito.toString());
+
+
+
+
 
 		
 		

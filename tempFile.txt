@@ -1,22 +1,4 @@
-Lucas Anezin;41614594;augusto;45;
-augusto;45;
-augusto;45;
-augusto;45;
-augusto;45;
-julian;88;
-julian;88;
-julian;88;
-julian;88;
-julian;88;
-julian;88;
-julian;88;
-julian;88;
-julian;88;
-julian;88;
-julian;88;
-julian;88;
-julian;88;
-julian;88;
-julian;88;
-julian;88;
-julian;88;
+julian;88;null;null;null;null;null;null;null
+julian;88;null;null;null;null;null;null;null
+julian;88;null;null;null;null;null;null;null
+julian;88;null;null;null;null;null;null;null

@@ -46,7 +46,7 @@ public class ClienteDAOimplArchivo implements ClienteDAO {
 	
 	private String SaveCliente(Cliente cliente){
 		
-		return cliente.getNombreYApellido() + ";" + cliente.getDni() +";" + cliente.getEmail()+";"+ "\n";
+		return cliente.getNombreYApellido() + ";" + cliente.getDni() +";" + cliente.getEmail()+";" + cliente.getCuit()+ ";" + cliente.getDireccionCompleta() + ";" + cliente.getFecha_nacimiento()  + ";" + cliente.getPasajeroFrecuente() + ";" + cliente.getPasaporte() + ";" + cliente.getTelefono() + "\n";
 		
 		
 	}
@@ -140,7 +140,14 @@ public class ClienteDAOimplArchivo implements ClienteDAO {
 		
 		Cliente cliente = new Cliente();
 		cliente.setNombreYApellido(atributos[0]);
-		cliente.setDni(atributos[1]); 
+		cliente.setDni(atributos[1]);
+		cliente.setEmail(atributos[2]);
+		cliente.setCuit(atributos[3]);
+		//cliente.setDireccionCompleta(atributos[4]);
+		//cliente.setFecha_nacimiento(atributos[5]);
+		//cliente.getPasaporte(atributos[7]);
+		//cliente.setTelefono(atributos[8]);
+		//cliente.setPasajeroFrecuente(atributos[6]);
 
 		return cliente;
 

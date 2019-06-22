@@ -34,24 +34,7 @@ public class ClienteDAOimplSerializacion implements ClienteDAO {
 		return false;
 	}
 
-	public Cliente getCliente(){
 
-		try {
-
-			FileInputStream fileIn = new FileInputStream("clientesS.txt");
-			ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-
-			Cliente cliente = (Cliente) objectIn.readObject();
-
-			System.out.println("The Object has been read from the file");
-			objectIn.close();
-			return cliente;
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			return null;
-		}
-	}
 
 	@Override
 	public List<Cliente> GetAll() throws IOException {
